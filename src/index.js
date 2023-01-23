@@ -1,3 +1,4 @@
+import { isNumber } from 'lodash';
 import './styles/index.scss';
 
 function clickNumber(e) {
@@ -32,7 +33,7 @@ function clickOperator(e) {
 	}
 }
 
-const operators = document.getElementsByClassName("sign");
+const operators = document.getElementsByClassName("operator");
 
 for (let i = 0; i < operators.length; i++) {
 	const elementOne = operators[i];
@@ -40,54 +41,29 @@ for (let i = 0; i < operators.length; i++) {
 
 }
 
+const handleBack = document.getElementById('back-button');
 
-// function result(number) {
-// 	let sum = 0;
+handleBack.addEventListener("click", () => {
+	const calculatorInput = document.getElementById('input');
+	const value = calculatorInput.value;
 
-// 	const inputEl = document.getElementById("input");
-// 	const inputValue = inputEl.value;
-
-// 	if (operators === "+") {
-// 		const sum = 0;
-// 		newValue = sum;
-// 		sum.value = number + number
-// 	} else if (operators === "-") {
-// 		inputEl.value = number - number
-// 	} else if (operators === "*") {
-// 		inputEl.value = number * number
-// 	} else if (operators === "/") {
-// 		inputEl.value = number / number
-// 	}
-// }
-
-// result(numbers);
+	if (isNumber(value.charAt(value.length - 1))) {
+		calculatorInput.value = value.slice(0, - 1);
 
 
-// function calculator(someArray) {
-// 	let result;
-// 	for (let i = 0; i <= someArray.length; i++) {
-// 	}
-// 	result = someArray[i] + someArray[i += 1];
-// }
+	} else {
+		calculatorInput.value = value.slice(0, - 2);
 
-// calculator(numbers);
+	}
 
-// function result(number) {
-// 	const inputEl = document.getElementById("input");
-// 	const inputValue = inputEl.value;
-// 	const newValue = inputEl.value
+})
 
-// 	if (operators === "+") {
-// 		const sum = 0;
-// 		newValue = sum;
-// 		sum.value = number + number
-// 	} else if (operators === "-") {
-// 		inputEl.value = number - number
-// 	} else if (operators === "*") {
-// 		inputEl.value = number * number
-// 	} else if (operators === "/") {
-// 		inputEl.value = number / number
-// 	}
-// }
+const equal = document.getElementById('operator-equal');
 
-// result(numbers);
+equal.addEventListener("click", () => {
+	const calculatorInput = document.getElementById('input');
+
+	const result = eval(calculatorInput.value);
+
+	calculatorInput.value = result;
+})

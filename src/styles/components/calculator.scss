@@ -10,14 +10,28 @@
 	border: 3px solid $darker-pink;
 	border-radius: 5px;
 
+	.input-container {
+		position: relative;
+		margin-bottom: 30px;
+
+		i {
+			position: absolute;
+			right: 10px;
+			color: $dark-pink;
+			font-size: 25px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+
 	input {
 		padding: 10px 5px;
-		margin-bottom: 30px;
 		border: 2px solid $dark-pink;
 		color: $dark-pink;
 		background-color: transparent;
 		font-size: 18px;
 		border-radius: 5px;
+		width: 100%;
 	}
 }
 
@@ -34,6 +48,7 @@
 		font-weight: bold;
 		border-radius: 5px;
 		padding: 5px 0;
+		cursor: pointer;
 	}
 
 	&__numbers {
@@ -59,3 +74,41 @@
 	}
 }
 
+@media screen and (max-width: 425px) {
+	#calculator {
+		max-width: 320px;
+		padding: 10px;
+	
+		.input-container {
+			margin-bottom: 20px;
+	
+			i {
+				font-size: 22px;
+			}
+		}
+	
+		input {
+			font-size: 16px;
+		}
+	}
+	
+	.calculator {
+		gap: 10px;
+	
+		button {
+			font-size: 22px;
+		}
+	
+		&__numbers {
+			gap: 10px;
+	
+			& > div {
+				gap: 10px;
+			}
+		}
+	
+		&__operations {
+			gap: 10px;
+		}
+	}
+}
